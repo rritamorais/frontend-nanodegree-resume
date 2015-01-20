@@ -6,7 +6,8 @@
     {
       "email" : "rita.dpmorais@gmail.com",
       "location" : "Portugal",
-      "github": "rrritamorais"
+      "github" : "rrritamorais",
+      "mobile" : "913882979"
     }, 
     "pictureURL" : "images/ritaprofile.jpg",
     "welcomeMessage" : "Nice to meet ya!",
@@ -19,14 +20,22 @@ bio.display = function(){
   var formattedName = HTMLheaderName.replace("%data%", bio.name);
   var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
   var bioPic = HTMLbioPic.replace("%data%", bio.pictureURL);
+  var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+  var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);    
+  var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+  var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+
+
   $("#header").prepend(formattedRole);
   $("#header").prepend(formattedName);
   $("#header").prepend(bioPic);
+  $("#topContacts").prepend(formattedEmail);
+  $("#topContacts").prepend(formattedEmail);
+  $("#topContacts").prepend(formattedEmail);
+  $("#topContacts").prepend(formattedEmail);
 
   if(bio.skills.length > 0) $("#header").append(HTMLskillsStart);
-
   for(skill in bio.skills) {
-
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
     $("#skills").append(formattedSkill);
   }
@@ -88,35 +97,28 @@ $("#mapDiv").append(googleMap);
 
 
 var projects = {
-  "projects": [
-    {
-      "title": "Personal Website",
-      "dates": "Feb 2014",
-      "description": "Online portfolio with all my projects",
-      "images": [
-        "images/rrrita.jpg",
-        "images/rrrita2.jpg"
-      ] 
-    },
-    {
-      "title": "One Two Triangle",
-      "dates": "Feb 2014 - Feb 2015",
-      "description": "Weekly updated illustration project with Nathan Gotlib, illustrating each other's dreams",
-      "images": [
-        "images/rrrita.jpg",
-        "images/rrrita2.jpg"
-      ]  
-    },
-    {
-      "title": "Cover Illustration",
-      "dates": "Aug 2014",
-      "description": "Cover art for Japanese international magazine 'Kansai Scene'",
-      "images": [
-        "images/rrrita.jpg",
-        "images/rrrita2.jpg"
-      ]  
-    }
-  ]
+  "projects": [
+    {
+      "title": "Personal Website",
+      "dates": "Feb 2014",
+      "description": "Online portfolio with all my projects",
+      "images": ["images/rrrita.jpg",
+      "images/rrrita2.jpg"
+      ] 
+    },
+    {
+      "title": "One Two Triangle",
+      "dates": "Feb 2014 - Feb 2015",
+      "description": "Weekly updated illustration project with Nathan Gotlib, illustrating each other's dreams",
+      "images": ["images/onetwotriangle.jpg"] 
+    },
+    {
+      "title": "Cover Illustration",
+      "dates": "Aug 2014",
+      "description": "Cover art for Japanese international magazine 'Kansai Scene'",
+      "images": ["images/kansaiscene.jpg"]
+    }
+  ]
 };
 
 projects.display = function () {
@@ -133,10 +135,12 @@ projects.display = function () {
     var projectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
     $(".project-entry:last").append(projectDescription);
 
-    if (projects.projects[project].images.length > 0) {
+    if (projects.projects[project].images.length > -1) {
       for (image in projects.projects[project].images) {
     var projectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
     $(".project-entry:last").append(projectImage);
+
+    console.log(image);
 
     }
   }
