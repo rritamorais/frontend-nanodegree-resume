@@ -5,7 +5,7 @@
     "contacts" :
     {
       "email" : "rita.dpmorais@gmail.com",
-      "location" : "Portugal",
+      "location" : "Lausanne, Switzerland",
       "github" : "rrritamorais",
       "mobile" : "913882979"
     }, 
@@ -30,9 +30,9 @@ bio.display = function(){
   $("#header").prepend(formattedName);
   $("#header").prepend(bioPic);
   $("#topContacts").prepend(formattedEmail);
-  $("#topContacts").prepend(formattedEmail);
-  $("#topContacts").prepend(formattedEmail);
-  $("#topContacts").prepend(formattedEmail);
+  $("#topContacts").prepend(formattedGithub);
+  $("#topContacts").prepend(formattedLocation);
+  $("#topContacts").prepend(formattedMobile);
 
   if(bio.skills.length > 0) $("#header").append(HTMLskillsStart);
   for(skill in bio.skills) {
@@ -153,13 +153,13 @@ var education = {
   "schools": [
     {
       "name": "Escola Superior de Artes e Design",
-      "location": "Matosinhos",
+      "location": "Matosinhos, Portugal",
       "degree": "BA",
       "course": "Communication Design"
     },
     {
       "name": "Yildiz Technical University",
-      "location": "Istanbul",
+      "location": "Istanbul, Portugal",
       "degree": "BA Erasmus",
       "course": "Communication Design"
     }
@@ -167,7 +167,7 @@ var education = {
   "onlineCourses": [
   {
       "name" : "Udacity",
-      "location": "Lausanne",
+      "location": "Lausanne, Switzerland",
       "degree": "Nano degree",
       "course": "Front End Web Developer"
     }
