@@ -1,15 +1,16 @@
-
+//MY BIOGRAPHY
   var bio = {
-  "name" : "Rita Morais",
-  "role" : "Graphic Designer",
-  "contacts" : {
-  "email" : "rita.dpmorais@gmail.com",
-  "location" : "Portugal/Switzerland",
-  "github": "rrritamorais"
-  }, 
-  "pictureURL" : "images/ritaprofile.jpg",
-  "welcomeMessage" : "Nice to meet ya!",
-  "skills" : ["Photoshop", "Illustrator", "Drawing", "Dancing"]
+    "name" : "Rita Morais",
+    "role" : "Graphic Designer",
+    "contacts" :
+    {
+      "email" : "rita.dpmorais@gmail.com",
+      "location" : "Portugal",
+      "github": "rrritamorais"
+    }, 
+    "pictureURL" : "images/ritaprofile.jpg",
+    "welcomeMessage" : "Nice to meet ya!",
+    "skills" : ["Photoshop", "Illustrator", "Drawing", "Dancing"]
   };
 
 
@@ -35,39 +36,36 @@ bio.display();
 
 
 
-
-function displayWork () {
+//MY WORK
 var work = {
   "jobs": [
     {
       "employer": "Tasboa Lda",
       "title": "Intern",
-      "location": "Lisbon - Portugal",
+      "location": "Lisbon, Portugal",
       "dates": "Sep 2014 - Now",
       "description": "Redesign interface for a better UX/UI for an online event app"
     },
     {
       "employer": "Minerva, BL KIDS",
       "title": "Head Teacher",
-      "location": "Takarazuka - Japan",
+      "location": "Takarazuka, Japan",
       "dates": "Mar 2013 - Mar 2014",
       "description": "Head teacher, content and activity developer for the English Programme of an International Pre-school. Throughout the course of a year, followed a "
     },
     {
       "employer": "Jibun Mirai Associé",
       "title": "Editorial Designer",
-      "location": "Osaka - Japan",
+      "location": "Osaka, Japan",
       "dates": "Oct 2011 - Feb 2013",
       "description": "Portuguese lesson content developer and designer of all the school's eight languages' text books layouts and materials"
     }
     ]
-}
-
+};
 
 for(job in work.jobs) {
 
   $("#workExperience").append(HTMLworkStart);
-
 
 
   var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -86,10 +84,7 @@ for(job in work.jobs) {
 
 }
 
-}
-
-displayWork ();
-
+$("#mapDiv").append(googleMap);
 
 
 var projects = {
@@ -98,21 +93,30 @@ var projects = {
       "title": "Personal Website",
       "dates": "Feb 2014",
       "description": "Online portfolio with all my projects",
-      "images": "images/rrrita.jpg"  
+      "images": [
+        "images/rrrita.jpg",
+        "images/rrrita2.jpg"
+      ] 
     },
     {
       "title": "One Two Triangle",
       "dates": "Feb 2014 - Feb 2015",
       "description": "Weekly updated illustration project with Nathan Gotlib, illustrating each other's dreams",
-      "images": "images/onetwotriangle.jpg" 
+      "images": [
+        "images/rrrita.jpg",
+        "images/rrrita2.jpg"
+      ]  
     },
     {
       "title": "Cover Illustration",
       "dates": "Aug 2014",
       "description": "Cover art for Japanese international magazine 'Kansai Scene'",
-      "images": "images/kansaiscene.jpg" 
+      "images": [
+        "images/rrrita.jpg",
+        "images/rrrita2.jpg"
+      ]  
     }
-    ]
+  ]
 };
 
 projects.display = function () {
@@ -129,11 +133,14 @@ projects.display = function () {
     var projectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
     $(".project-entry:last").append(projectDescription);
 
-    var projectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+    if (projects.projects[project].images.length > 0) {
+      for (image in projects.projects[project].images) {
+    var projectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
     $(".project-entry:last").append(projectImage);
 
     }
-
+  }
+};
 }
 
 projects.display();
@@ -142,13 +149,13 @@ var education = {
   "schools": [
     {
       "name": "Escola Superior de Artes e Design",
-      "city": "Matosinhos",
+      "location": "Matosinhos",
       "degree": "BA",
       "course": "Communication Design"
     },
     {
       "name": "Yildiz Technical University",
-      "city": "Istanbul",
+      "location": "Istanbul",
       "degree": "BA Erasmus",
       "course": "Communication Design"
     }
@@ -156,7 +163,7 @@ var education = {
   "onlineCourses": [
   {
       "name" : "Udacity",
-      "city": "Lausanne",
+      "location": "Lausanne",
       "degree": "Nano degree",
       "course": "Front End Web Developer"
     }
@@ -183,7 +190,7 @@ function inName(name) {
   name[1] = name[1].toUpperCase();
   name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
 
-  return name[0] +" "+name[1];
+  return name[0] +" "+name[1]
 
 };
 $("#main").append(internationalizeButton);
@@ -202,6 +209,9 @@ $("#main").append(internationalizeButton);
 
 //   return locationArray;
 // }
+
+
+
 
 
 
