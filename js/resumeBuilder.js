@@ -1,4 +1,5 @@
-var bio = {
+
+  var bio = {
   "name" : "Rita Morais",
   "role" : "Graphic Designer",
   "contacts" : {
@@ -9,8 +10,33 @@ var bio = {
   "pictureURL" : "images/ritaprofile.jpg",
   "welcomeMessage" : "Nice to meet ya!",
   "skills" : ["Photoshop", "Illustrator", "Drawing", "Dancing"]
-}
+  };
 
+
+
+bio.display = function(){
+  var formattedName = HTMLheaderName.replace("%data%", bio.name);
+  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+  var bioPic = HTMLbioPic.replace("%data%", bio.pictureURL);
+  $("#header").prepend(formattedRole);
+  $("#header").prepend(formattedName);
+  $("#header").prepend(bioPic);
+
+  if(bio.skills.length > 0) $("#header").append(HTMLskillsStart);
+
+  for(skill in bio.skills) {
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+    $("#skills").append(formattedSkill);
+  }
+};
+
+bio.display();
+
+
+
+
+function displayWork () {
 var work = {
   "jobs": [
     {
@@ -32,81 +58,11 @@ var work = {
       "title": "Editorial Designer",
       "location": "Osaka - Japan",
       "dates": "Oct 2011 - Feb 2013",
-      "description": "Portugues lesson content developer and designer of all the school's eight languages' text books layouts and materials"
+      "description": "Portuguese lesson content developer and designer of all the school's eight languages' text books layouts and materials"
     }
     ]
 }
 
-var projects = {
-  "projects": [
-    {
-      "title": "Personal Website",
-      "dates": "Feb 2014",
-      "description": "Online portfolio with all my projects",
-      "images": "images/rrrita.jpg"    
-    },
-    {
-      "title": "One Two Triangle",
-      "dates": "Feb 2014 - Feb 2015",
-      "description": "Weekly updated illustration project with Nathan Gotlib, illustrating each other's dreams",
-      "images": "images/onetwotriangle.jpg" 
-    },
-    {
-      "title": "Cover Illustration",
-      "dates": "Aug 2014",
-      "description": "Cover art for Japanese international magazine 'Kansai Scene'",
-      "images": "images/kansaiscenejpg" 
-    }
-    ]
-}
-
-var education = {
-  "schools": [
-    {
-      "name": "Escola Superior de Artes e Design",
-      "city": "Matosinhos",
-      "degree": "BA",
-      "course": "Communication Design"
-    },
-    {
-      "name": "Yildiz Technical University",
-      "city": "Istanbul",
-      "degree": "BA Erasmus",
-      "course": "Communication Design"
-    }
-  ],
-  "onlineCourses": [
-  {
-      "name" : "Udacity",
-      "city": "Lausanne",
-      "degree": "Nano degree",
-      "course": "Front End Web Developer"
-    }
-  ]
-}
-
-var name = "Rita Morais"
-var formattedName = HTMLheaderName.replace("%data%", name);
-
-
-var role = "Front End Developer";
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
-
-if(bio.skills.length > 0) $("#header").append(HTMLskillsStart);
-
-for(skill in bio.skills) {
-
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
-  $("#skills").append(formattedSkill);
-  
-}
-
-function displayWork () {
 
 for(job in work.jobs) {
 
@@ -133,6 +89,89 @@ for(job in work.jobs) {
 }
 
 displayWork ();
+
+
+
+var projects = {
+  "projects": [
+    {
+      "title": "Personal Website",
+      "dates": "Feb 2014",
+      "description": "Online portfolio with all my projects",
+      "images": "images/rrrita.jpg"  
+    },
+    {
+      "title": "One Two Triangle",
+      "dates": "Feb 2014 - Feb 2015",
+      "description": "Weekly updated illustration project with Nathan Gotlib, illustrating each other's dreams",
+      "images": "images/onetwotriangle.jpg" 
+    },
+    {
+      "title": "Cover Illustration",
+      "dates": "Aug 2014",
+      "description": "Cover art for Japanese international magazine 'Kansai Scene'",
+      "images": "images/kansaiscene.jpg" 
+    }
+    ]
+};
+
+projects.display = function () {
+  for(project in projects.projects) {
+
+    $("#projects").append(HTMLprojectStart);
+
+    var projectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+    $(".project-entry:last").append(projectTitle);
+    
+    var projectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+    $(".project-entry:last").append(projectDates);
+
+    var projectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+    $(".project-entry:last").append(projectDescription);
+
+    var projectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+    $(".project-entry:last").append(projectImage);
+
+    }
+
+}
+
+projects.display();
+
+var education = {
+  "schools": [
+    {
+      "name": "Escola Superior de Artes e Design",
+      "city": "Matosinhos",
+      "degree": "BA",
+      "course": "Communication Design"
+    },
+    {
+      "name": "Yildiz Technical University",
+      "city": "Istanbul",
+      "degree": "BA Erasmus",
+      "course": "Communication Design"
+    }
+  ],
+  "onlineCourses": [
+  {
+      "name" : "Udacity",
+      "city": "Lausanne",
+      "degree": "Nano degree",
+      "course": "Front End Web Developer"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
