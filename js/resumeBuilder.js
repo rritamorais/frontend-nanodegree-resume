@@ -44,11 +44,13 @@ bio.display = function(){
   $("#footerContacts").prepend(formattedEmail);
   $("#footerContacts").prepend(formattedMobile);
 
-  if(bio.skills.length > 0) $("#header").append(HTMLskillsStart);
+  if(bio.skills.length > 0) {
+  $("#header").append(HTMLskillsStart);
   for(skill in bio.skills) {
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
     $("#skills").append(formattedSkill);
   }
+}
 };
 
 bio.display();
@@ -59,21 +61,21 @@ var work = {
     {
       "employer": "Tasboa Lda",
       "title": "Intern",
-      "location": "Lisbon, Portugal",
+      "location": "Lisbon - Portugal",
       "dates": "Sep 2014 - Now",
       "description": "Redesign interface for a better UX/UI for an online event app"
     },
     {
       "employer": "Minerva, BL KIDS",
       "title": "Head Teacher",
-      "location": "Takarazuka, Japan",
+      "location": "Takarazuka - Japan",
       "dates": "Mar 2013 - Mar 2014",
       "description": "Head teacher, content and activity developer for the English Programme of an International Pre-school."
     },
     {
       "employer": "Jibun Mirai Associé",
       "title": "Editorial Designer",
-      "location": "Osaka, Japan",
+      "location": "Osaka - Japan",
       "dates": "Oct 2011 - Feb 2013",
       "description": "Portuguese lesson content developer and designer of all the school's eight languages' text books layouts and materials."
     }
@@ -151,8 +153,8 @@ projects.display = function () {
         $(".project-entry:last").append(projectImage);
       }
     }
-  };
-}
+  }
+};
 
 projects.display();
 
@@ -161,14 +163,14 @@ var education = {
   "schools": [
     {
       "name": "Escola Superior de Artes e Design",
-      "location": "Matosinhos, Portugal",
+      "location": "Matosinhos - Portugal",
       "degree": "BA",
       "dates": "2008-2011",
       "course": "Communication Design"
     },
     {
       "name": "Yildiz Technical University",
-      "location": "Istanbul, Turkey",
+      "location": "Istanbul - Turkey",
       "dates": "2009-2010",
       "degree": "BA Erasmus",
       "course": "Graphic Design"
@@ -182,7 +184,7 @@ var education = {
       "url": "https://www.udacity.com/courses#!/all"
     }
   ]
-}
+};
 
 education.display = function(){
 
@@ -233,7 +235,7 @@ function inName(name) {
   name[1] = name[1].toUpperCase();
   name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
 
-  return name[0] +" "+name[1]
-};
+  return name[0] +" "+name[1];
+}
 
 $("#main").append(internationalizeButton);
