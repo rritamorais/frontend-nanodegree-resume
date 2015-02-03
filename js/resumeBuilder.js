@@ -44,8 +44,6 @@ bio.display = function(){
   $("#footerContacts").prepend(formattedEmail);
   $("#footerContacts").prepend(formattedMobile);
 
-
-
   if(bio.skills.length > 0) $("#header").append(HTMLskillsStart);
   for(skill in bio.skills) {
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
@@ -70,14 +68,14 @@ var work = {
       "title": "Head Teacher",
       "location": "Takarazuka, Japan",
       "dates": "Mar 2013 - Mar 2014",
-      "description": "Head teacher, content and activity developer for the English Programme of an International Pre-school. Throughout the course of a year, followed a "
+      "description": "Head teacher, content and activity developer for the English Programme of an International Pre-school."
     },
     {
       "employer": "Jibun Mirai Associé",
       "title": "Editorial Designer",
       "location": "Osaka, Japan",
       "dates": "Oct 2011 - Feb 2013",
-      "description": "Portuguese lesson content developer and designer of all the school's eight languages' text books layouts and materials"
+      "description": "Portuguese lesson content developer and designer of all the school's eight languages' text books layouts and materials."
     }
   ]
 };
@@ -105,7 +103,6 @@ for(job in work.jobs) {
 };
 
 work.display();
-
 
 //MY PROJECTS
 var projects = {
@@ -158,7 +155,6 @@ projects.display = function () {
 }
 
 projects.display();
-
 
 //MY EDUCATION
 var education = {
