@@ -1,13 +1,15 @@
 //MY BIOGRAPHY
-  var bio = {
+var bio = {
     "name" : "Rita Morais",
     "role" : "Graphic Designer",
     "contacts" :
     {
+      "mobile" : "913882979",
       "email" : "rita.dpmorais@gmail.com",
-      "location" : "Lausanne, Switzerland",
       "github" : "rrritamorais",
-      "mobile" : "913882979"
+      "location" : "Lausanne, Switzerland",
+      "blog" : "www.rrrita.com"
+      
     }, 
     "pictureURL" : "images/ritaprofile.jpg",
     "WelcomeMsg" : "Nice to meet ya!",
@@ -23,18 +25,26 @@ bio.display = function(){
   var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);    
   var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
   var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+  var formattedBlog = HTMLblog.replace("%data%",bio.contacts.blog);
 
-  $("#header").prepend(bioPic);
-  $("#header").prepend(WelcomeMsg);
   $("#header").prepend(formattedRole);
   $("#header").prepend(formattedName);
-  
+  $("#header").append(bioPic);
+  $("#header").append(WelcomeMsg);
 
-
-  $("#topContacts").prepend(formattedEmail);
   $("#topContacts").prepend(formattedGithub);
   $("#topContacts").prepend(formattedLocation);
+  $("#topContacts").prepend(formattedBlog);
+  $("#topContacts").prepend(formattedEmail);
   $("#topContacts").prepend(formattedMobile);
+
+  $("#footerContacts").prepend(formattedGithub);
+  $("#footerContacts").prepend(formattedLocation);
+  $("#footerContacts").prepend(formattedBlog);
+  $("#footerContacts").prepend(formattedEmail);
+  $("#footerContacts").prepend(formattedMobile);
+
+
 
   if(bio.skills.length > 0) $("#header").append(HTMLskillsStart);
   for(skill in bio.skills) {
@@ -69,14 +79,13 @@ var work = {
       "dates": "Oct 2011 - Feb 2013",
       "description": "Portuguese lesson content developer and designer of all the school's eight languages' text books layouts and materials"
     }
-    ]
+  ]
 };
 
 work.display = function(){
 
 for(job in work.jobs) {
   $("#workExperience").append(HTMLworkStart);
-
 
   var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
   var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -92,7 +101,7 @@ for(job in work.jobs) {
   var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
   $(".work-entry:last").append(formattedDescription);
 
-}
+  }
 };
 
 work.display();
@@ -141,12 +150,11 @@ projects.display = function () {
 
     if (projects.projects[project].images.length > 0) {
       for (image in projects.projects[project].images) {
-    var projectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-    $(".project-entry:last").append(projectImage);
-
+        var projectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+        $(".project-entry:last").append(projectImage);
+      }
     }
-  }
-};
+  };
 }
 
 projects.display();
@@ -179,7 +187,6 @@ var education = {
     }
   ]
 }
-
 
 education.display = function(){
 
@@ -214,20 +221,15 @@ if (education.onlineCourses.length > 0) {
     var onlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
     $(".education-entry:last").append(onlineDates);
 
-
     var onlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
     $(".education-entry:last").append(onlineURL);
-
     }
   }
 };
 
 education.display();
 
-
 $("#mapDiv").append(googleMap);
-
-
 
 function inName(name) {
   name = bio.name;
@@ -236,16 +238,6 @@ function inName(name) {
   name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
 
   return name[0] +" "+name[1]
-
 };
 
 $("#main").append(internationalizeButton);
-
-
-
-
-
-
-
-
-
